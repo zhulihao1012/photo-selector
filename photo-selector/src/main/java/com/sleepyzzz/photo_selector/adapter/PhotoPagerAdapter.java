@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import com.bumptech.glide.Glide;
 import com.sleepyzzz.photo_selector.R;
 import com.sleepyzzz.photo_selector.event.OnPagerCLickListener;
+import com.sleepyzzz.photo_selector.util.ImageLoader;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,28 +45,28 @@ public class PhotoPagerAdapter extends PagerAdapter {
         View itemView = mInflater.inflate(R.layout.item_pager, container, false);
 
         ImageView imageView = (ImageView) itemView.findViewById(R.id.iv_pager);
-
-        //自定义图片异步加载类(大图片存在OOM)
-        /*ImageLoader.getInstance(3, ImageLoader.Type.LIFO)
-                .loadImage(mPaths.get(position), imageView);*/
-        /*Glide.with(mContext)
-                .load(mPaths.get(position))
-                .thumbnail(0.1f)
-                .dontAnimate()
-                .dontTransform()
-                .override(800, 800)
-                .placeholder(R.drawable.ic_photo_black_48dp)
-                .error(R.drawable.ic_broken_image_black_48dp)
-                .into(imageView);*/
-        Glide.with(mContext)
-                .load(mPaths.get(position))
-                .thumbnail(0.1f)        //先显示.1的缩略图
-                .dontAnimate()
-                .dontTransform()
-                .override(800, 800)     //尺寸
-                .placeholder(R.drawable.ic_photo_black_48dp)
-                .error(R.drawable.ic_broken_image_black_48dp)
-                .into(imageView);
+//
+//        //自定义图片异步加载类(大图片存在OOM)
+//        ImageLoader.getInstance(3, ImageLoader.Type.LIFO)
+//                .loadImage(mPaths.get(position), imageView);
+//        Glide.with(mContext)
+//                .load(mPaths.get(position))
+//                .thumbnail(0.1f)
+//                .dontAnimate()
+//                .dontTransform()
+//                .override(800, 800)
+//                .placeholder(R.drawable.ic_photo_black_48dp)
+//                .error(R.drawable.ic_broken_image_black_48dp)
+//                .into(imageView);
+//        Glide.with(mContext)
+//                .load(mPaths.get(position))
+//                .thumbnail(0.1f)        //先显示.1的缩略图
+//                .dontAnimate()
+//                .dontTransform()
+//                .override(800, 800)     //尺寸
+//                .placeholder(R.drawable.ic_photo_black_48dp)
+//                .error(R.drawable.ic_broken_image_black_48dp)
+//                .into(imageView);
 
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
